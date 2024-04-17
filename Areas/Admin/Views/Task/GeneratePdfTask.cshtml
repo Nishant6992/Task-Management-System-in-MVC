@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Task_Management_System2.Areas.Admin.Models.AllTaskViewTableEntity>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Task Report</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .table tbody tr:nth-child(odd) {
+            background-color: #f9f9f9; 
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #ffffff; 
+        }
+
+        .action-link {
+            margin-right: 5px; 
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            .action-link:hover {
+                text-decoration: underline; 
+                color: #0056b3; 
+            }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Task Data</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Task ID</th>
+                        <th>Task Name</th>
+                        <th>Project Name</th>
+                        <th>Project Id</th>
+                        <th>Task Description</th>
+                        <th>Start Date</th>
+                        <th>Estimate Date</th>
+                        <th>Attachment</th>
+                        <th>Assigned To</th>
+                        <th>User Comment</th>
+                        <th>Task Priority Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.TaskId</td>
+                            <td>@item.TaskName</td>
+                            <td>@item.ProjectName</td>
+                            <td>@item.ProjectId</td>
+                            <td>@item.TaskDescription</td>
+                            <td>@item.StartDate</td>
+                            <td>@item.EstimateDate</td>
+                            <td>@item.Attachment</td>
+                            <td>@item.AssignedTo</td>
+                            <td>@item.UserComment</td>
+                            <td>@item.TaskPriority</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Task_Management_System2.Areas.Admin.Models.AllDataViewEntity>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Repeater View</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS */
+        .table tbody tr:nth-child(odd) {
+            background-color: #f9f9f9; 
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #ffffff; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Employee Data</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Full Name</th>
+                        <th>Date of Birth</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Joining Date</th>
+                        <th>Data Updated</th>
+                        <th>Left Company</th>
+                        <th>Deleted Data</th>
+                        <th>User Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Employee_Id</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.Date_of_Birth</td>
+                            <td>@item.Email</td>
+                            <td>@item.Address</td>
+                            <td>@item.Phone</td>
+                            <td>@item.JoinedCompany</td>
+                            <td>@item.UpdatedEntry</td>
+                            <td>@item.LeftCompany</td>
+                            <td>@item.IsDeleted</td>
+                            <td>@item.UserType</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+

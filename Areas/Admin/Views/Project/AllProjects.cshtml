@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Task_Management_System2.Areas.Admin.Models.NewProject>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>All Task</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+       
+        .table tbody tr:nth-child(odd) {
+            background-color: #f9f9f9; 
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #ffffff; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">All Projects</h2>
+        @Html.ActionLink("Generate PDF Report", "GeneratePdfProject")
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Project Id</th>
+                        <th>Project Name</th>
+                        <th>Project Description</th>
+                        <th>Total Hours</th>
+                        <th>Start Date</th>
+                        <th>Modified Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ProjectId</td>
+                            <td>@item.ProjectName</td>
+                            <td>
+                                @item.ProjectDescription
+                                @Html.ActionLink("View", "ProjectDetails", "Project", new { id = item.ProjectId }, new { })
+                            </td>
+                            <td>@item.ProjectHours</td>
+                            <td>@item.StartDate</td>
+                            <td>@item.ModifiedDate</td>
+                            <td>@item.EndDate</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

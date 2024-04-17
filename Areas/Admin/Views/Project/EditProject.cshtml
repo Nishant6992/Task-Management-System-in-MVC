@@ -1,0 +1,105 @@
+﻿@model Task_Management_System2.Areas.Admin.Models.NewProject
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Project</title>
+    <style>
+
+        .container {
+            margin: auto;
+            width: 50%;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+        .text-danger {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+            <h4>Edit Project</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CreatedBy)
+                @Html.TextBoxFor(model => model.CreatedBy, new { @class = "form-control", disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
+            </div>
+                        <div class="form-group">
+                @Html.LabelFor(model => model.ProjectNamess)
+                @Html.DropDownListFor(model => model.ProjectNamess, new SelectList("--Access Type--"), new { @class = "form-control" }))
+                @Html.ValidationMessageFor(model => model.ProjectNamess, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EndDate)
+                @Html.TextBoxFor(model => model.EndDate, new { Type = "Date", @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProjectDescription)
+                @Html.TextAreaFor(model => model.ProjectDescription, new { @class = "form-control", rows = "4" })
+                @Html.ValidationMessageFor(model => model.ProjectDescription, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create Project" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+        });
+    </script>
+</body>
+</html>
+
+
